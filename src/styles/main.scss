@@ -1,0 +1,37 @@
+@import "../../node_modules/bulma/bulma.sass";
+
+.input, input:focus {
+  border-width: 0px 0px 1px 0px;
+  border-radius: 0px;
+  box-shadow: none;
+}
+.box {
+  padding : 0.8rem 1.2rem;
+}
+.column {
+  padding : 0.3 rem;
+}
+.drag-box {
+  cursor: pointer;
+}
+.drag-box:hover .grip {
+  opacity: 1;
+  color : #dbdbdb;
+}
+.grip {
+  opacity: 0;
+  cursor: move;
+}
+.order {
+  display: initial;
+}
+.drag-box:hover .order {
+  display: none;
+}
+.icon-delete {
+  display: none;
+}
+
+.drag-box:hover .icon-delete {
+  display: inline-flex;
+}
