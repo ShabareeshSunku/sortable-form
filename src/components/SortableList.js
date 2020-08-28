@@ -6,13 +6,19 @@ import React, { Component } from 'react'
 export default class SortableList extends Component {
   constructor(props) {
     super(props)
-    this.state = { data: this.props.data.slice(0), dragging: undefined }
+    this.state = { dragging: undefined }
   }
-  sort = (data, dragging) => {
-    this.setState({ data, dragging });
+  sort = (data, dragging, dataUpdated = false) => {
+    const me = this
+    if (dataUpdated) {
+      me.setState({ dragging }, () => {
+        me.props.updateFields(data)
+      });
+    }
   }
   dragEnd = () => {
-    this.sort(this.state.data, undefined);
+    const data = this.data.slice(0)
+    this.sort(data, undefined, true);
   }
   dragStart = (e) => {
     this.dragged = Number(e.currentTarget.dataset.id);
@@ -30,12 +36,13 @@ export default class SortableList extends Component {
     // if ((e.clientY - over.offsetTop) > (over.offsetHeight / 2)) to++;
     // if (from < to) to--;
     // Move from 'a' to 'b'
-    var items = this.state.data.slice(0);
+    var items = this.props.data.slice(0);
     items.splice(to, 0, items.splice(from, 1)[0]);
-    this.sort(items, to);
+    this.sort(items, to, false);
+    this.data = items
   }
   render() {
-    const { data = [] } = this.state
+    const { data = [] } = this.props
     const ListItem = this.props.ListItem
     return (
       <div className="columns is-multiline">
@@ -50,7 +57,15 @@ export default class SortableList extends Component {
               onDragOver: this.dragOver,
               onDragStart: this.dragStart
             }
-            return <ListItem draggableProps={draggableProps} item={item} key={'' + idx} idx={idx} />
+            return (
+              <ListItem
+                draggableProps={draggableProps}
+                item={item}
+                key={'' + idx}
+                idx={idx}
+                onDelete = {this.props.deleteField}
+              />
+            )
           })
         }
       </div>

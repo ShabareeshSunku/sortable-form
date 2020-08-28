@@ -1,22 +1,37 @@
-@import "../../node_modules/bulma/bulma.sass";
-
-.input, input:focus {
+@import "../../node_modules/bulma/sass/utilities/_all.sass";
+@import "../../node_modules/bulma/sass/base/_all.sass";
+@import "../../node_modules/bulma/sass/components/dropdown.sass";
+@import "../../node_modules/bulma/sass/components/level.sass";
+@import "../../node_modules/bulma/sass/components/panel.sass";
+@import "../../node_modules/bulma/sass/elements/box.sass";
+@import "../../node_modules/bulma/sass/elements/button.sass";
+@import "../../node_modules/bulma/sass/elements/container.sass";
+@import "../../node_modules/bulma/sass/elements/icon.sass";
+@import "../../node_modules/bulma/sass/elements/tag.sass";
+@import "../../node_modules/bulma/sass/elements/title.sass";
+@import "../../node_modules/bulma/sass/form/shared.sass";
+@import "../../node_modules/bulma/sass/form/input-textarea.sass";
+@import "../../node_modules/bulma/sass/grid/columns.sass";
+@import "../../node_modules/bulma/sass/helpers/_all.sass";
+@import "../../node_modules/bulma/sass/layout/section.sass";
+.input,
+input:focus {
   border-width: 0px 0px 1px 0px;
   border-radius: 0px;
   box-shadow: none;
 }
 .box {
-  padding : 0.8rem 1.2rem;
+  padding: 0.8rem 1.2rem;
 }
 .column {
-  padding : 0.3 rem;
+  padding: 0.3 rem;
 }
 .drag-box {
   cursor: pointer;
 }
 .drag-box:hover .grip {
   opacity: 1;
-  color : #dbdbdb;
+  color: #dbdbdb;
 }
 .grip {
   opacity: 0;
@@ -34,4 +49,10 @@
 
 .drag-box:hover .icon-delete {
   display: inline-flex;
+}
+.panel-body {
+  padding: 0.7rem;
+}
+.section {
+  padding: 1rem
 }
